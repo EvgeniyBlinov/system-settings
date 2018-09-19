@@ -1,0 +1,3 @@
+#!/usr/bin/env python
+import hashlib,sys
+print hashlib.md5(sys.stdin.read()).hexdigest()

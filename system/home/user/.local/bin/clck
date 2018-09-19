@@ -1,0 +1,7 @@
+#!/bin/bash
+
+[ -z "$1" ] && 
+    echo "Enter valid URL!" &&
+    exit 1
+curl "https://clck.ru/--?url=$1"
+echo ''

@@ -1,0 +1,5 @@
+#!/bin/bash
+x-terminal-emulator -e recordmydesktop -y 55 $(xrandr -q |
+    awk -F'current' -F',' 'NR==1 {gsub("( |current)","");print $2}'|
+    awk -F'x' '{printf "--width "$1; print " --height "$2-90}') \
+        -o ~/VIDEO/$(date +%F_%H:%M:%S).ogv

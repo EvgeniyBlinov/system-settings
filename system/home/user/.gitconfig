@@ -1,0 +1,46 @@
+[user]
+	name = Blinov Evgeniy
+	email = evgeniy_blinov@mail.ru
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+    ui = auto
+    interactive = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = cyan bold
+    changed = red
+    untracked = magenta bold
+[push]
+	default = current
+[alias]
+    co = checkout
+    m = merge
+    cp = cherry-pick
+    f = fetch
+    fo = fetch origin
+    rom = rebase origin/master
+    rbm = rebase master
+    rbi = rebase --interactive
+    rbc = rebase --continue
+    rbs = rebase --skip
+    rba = rebase --abort
+    st = status -s
+    ci = commit
+    br = branch
+    lol = log --graph --date=relative --pretty=format:"%C(Yellow)%h%x20%C(Blue)%an%C(Red)%d%x20%C(Green)-%x20%s%x20%C(Cyan)%cd"
+	d = difftool
+
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
