@@ -271,7 +271,8 @@
     </keybind>
     <keybind key="W-y">
       <action name="Execute">
-          <command>/usr/local/bin/skype.sh</command>
+          <!--<command>/usr/local/bin/skype.sh</command>-->
+          <command>/usr/bin/skypeforlinux</command>
       </action>
     </keybind>
     <keybind key="W-u">

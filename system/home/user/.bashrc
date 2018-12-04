@@ -16,9 +16,13 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 #HISTCONTROL=ignoredups
+#export HISTCONTROL=ignoredups:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# After each command, save and reload history
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 #HISTSIZE=1000
@@ -162,3 +166,7 @@ export PATH="$PATH:/usr/scripts/bin" # Add RVM to PATH for scripting
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ -x /usr/bin/kubectl ]; then
+    source <(kubectl completion bash)
+fi
