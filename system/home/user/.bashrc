@@ -65,10 +65,16 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\t-\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+if [ "$(id -u)" = 0 ]; then
+    PS1_END="#"
 else
-    PS1='${debian_chroot:+($debian_chroot)}\t-\u@\h:\w\$ '
+    PS1_END=";)"
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\t-\u@\h\[\033[00m\]:\[\033[01;34m\]\w${PS1_END}\[\033[00m\]"
+else
+    PS1="${debian_chroot:+($debian_chroot)}\t-\u@\h:\w${PS1_END}"
 fi
 unset color_prompt force_color_prompt
 
@@ -76,11 +82,12 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
     #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    PS1="\[\e]0;\t-\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01m\]\t-\u@\h:\w;)\[\033[00m\]"
+    PS1="\[\e]0;\t-\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01m\]\t-\u@\h:\w${PS1_END}\[\033[00m\]"
     ;;
 *)
     ;;
 esac
+
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -167,6 +174,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [ -x /usr/bin/kubectl ]; then
-    source <(kubectl completion bash)
-fi
