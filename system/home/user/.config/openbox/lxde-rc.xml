@@ -193,7 +193,8 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>/bin/bash /SETTINGS/home/user/myscripts/SYSTEM/touchpad_toggle.sh</command>
+        <command>x-terminal-emulator -e "/usr/bin/vim /home/evgeniy/JOB/diary/todo.1.txt"</command>
+        <!--<action name="ToggleMaximizeFull"/>-->
       </action>
     </keybind>
     <keybind key="W-z">

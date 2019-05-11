@@ -170,3 +170,5 @@ export NVM_DIR="$HOME/.nvm"
 if [ -x /usr/bin/kubectl ]; then
     source <(kubectl completion bash)
 fi
+## ls for may files
+export LS_COLORS='ex=00:su=00:sg=00:ca=00:'
